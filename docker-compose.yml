@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  opa:
+    image: openpolicyagent/opa:latest-static
+    container_name: medguard-opa
+    ports:
+      - "8181:8181"
+    volumes:
+      - ./policies:/policies
+    command:
+      - "run"
+      - "--server"
+      - "--log-level=info"
+      - "/policies"
+
+  gateway:
+    build: .
+    container_name: medguard-gateway
+    ports:
+      - "8000:8000"
+    environment:
+      - OPA_URL=http://opa:8181/v1/data/medguard/authz/allow
+    depends_on:
+      - opa
