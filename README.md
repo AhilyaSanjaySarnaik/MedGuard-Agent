@@ -1,4 +1,4 @@
-Here is a `README.md` structured around **what MedGuard Agent is, why it exists, and how its security mechanism works under the hood**:
+![Architecture Diagram](licensed-image.jpg)
 
 ```markdown
 # MedGuard Agent: Zero-Trust Security Framework for Clinical AI
